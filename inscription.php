@@ -1,9 +1,18 @@
-<!-- ICI DOIT APPARAITRE LE CODE PHP CONTENANT
-    LA LIAISON AVEC LA BASE DE DONNEES
-    LA DECLARATION DES VARIABLES
-    ET LA GESTION DES ERREURS
--->
+<?php
+include('db.php');
+if (isset($_POST['enregistrer'])){
 
+  $nom = $_POST['nom'];
+  $prenom = $_POST['prenom'];
+  $email = $_POST['email'];
+  $mdp = $_POST['password'];
+
+  $req = "INSERT INTO tpfinal (nom, prenom, email, password) VALUES(?,?,?,?)";
+  $execute = $pdo->prepare($req);
+  $stm = $execute->execute([$nom, $prenom, $email, $mdp]);
+  echo "<center> inscription effectuée avec succès !</center>";
+}
+?>
 
 
 <!DOCTYPE html>
